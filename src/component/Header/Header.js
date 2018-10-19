@@ -1,9 +1,10 @@
 import React from 'react'
+import './Header.css'
 
 export default function Header() {
   return (
-    <div>
-      Header
+    <div className='header-cont'>
+      <div className='text'>Header</div>
     </div>
   )
 }

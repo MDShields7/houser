@@ -1,0 +1,9 @@
+
+.Dashboard-dash {
+    width: 800px;
+    display: flex;
+    /* display: inline-flex; */
+    background: rgb(194, 194, 194);
+    flex-direction: row;
+    justify-content: space-between;
+}

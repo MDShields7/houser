@@ -1,0 +1,13 @@
+.header-cont {
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    align-content: center;
+    /* justify-content: center; */
+    /* background: red; */
+}
+
+.text {
+    font-size: 36;
+    align-content: center;
+}

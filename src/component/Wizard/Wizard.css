@@ -1,0 +1,10 @@
+.wizard-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 200px;
+}
