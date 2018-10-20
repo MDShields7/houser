@@ -7,3 +7,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.house-container {
+    /* justify-content: center; */
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    /* justify-content: center; */
+    align-items: center;
+    /* justify-items: center; */
+}

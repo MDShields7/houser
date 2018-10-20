@@ -1,0 +1,14 @@
+img {
+    height: 300px;
+    width: 300px auto;
+}
+.home-box {
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-items: center; */
+    align-items: center;
+    /* justify-content: center; */
+    /* align-content: center; */
+}
