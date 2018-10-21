@@ -18,6 +18,7 @@ module.exports = {
         console.log('controller.js, post method')
         dbInstance.post_house([name, address, city, state, price, image_url])
         .then( () => res.status(200))
+        console.log('controller, post, res')
         .catch(error => {
             res.status(500).send('post method attempt', error)
         })
@@ -27,7 +28,7 @@ module.exports = {
         console.log('controller.js, delete method')
         const {id} = req.params;
         dbInstance.delete_house(id)
-        .then( () => res.status(200))
+        .then( () => res.status(200).send())
         .catch(error => {
             res.status(500).send('delete method attempt', error)
         })

@@ -11,8 +11,11 @@ export default class Wizard extends Component {
             address: '',
             city: '',
             state: '',
+            zip: 0,
             price: 0,
             image_url: '',
+            mortgage: 0,
+            rent: 0
         }
         this.handleChange_nam = this.handleChange_nam.bind(this);
         this.handleChange_adr = this.handleChange_adr.bind(this);
@@ -22,12 +25,22 @@ export default class Wizard extends Component {
         this.handleChange_url = this.handleChange_url.bind(this);
         this.dummyPostHouse = this.dummyPostHouse.bind(this);
         this.postHouse = this.postHouse.bind(this);
-        // this.cancel = this.cancel.bind(this);
+        this.cancel = this.cancel.bind(this);
+    };
+    cancel(){
+        this.setState({
+            name: '',
+            address: '',
+            city: '',
+            state: '',
+            price: 0,
+            image_url: '',
+        })
     };
     postHouse (){
         const {name, address, city, state, price, image_url} = this.state;
         axios.post('/api/houses', {name, address, city, state, price, image_url})
-        .then(response => {console.log(response)});
+        .then(response => {console.log('wizard.js, postHouse, response',response)});
     };
     dummyPostHouse (){
         console.log('dashboard.js, dummyPostHouse')
@@ -41,6 +54,12 @@ export default class Wizard extends Component {
         .then(response => {console.log(response)});
         // this.componentDidMount();
     };
+     
+    // handleInput = (e) => {
+    //     const name = e.target.name
+    //     const value = e.target.value
+    //     this.setState({[name]: value})
+    // }
     
     handleChange_nam(e){
         this.setState({
@@ -74,10 +93,11 @@ export default class Wizard extends Component {
     };
   render() {
       const{name, address, city, state, price, image_url} = this.state;
-      console.log(this.state.price)
+      console.log(this.state)
     return (
       <div className='wizard-inputs'>
         <h1>Wizard</h1>
+        
         Property Name:
         <input type="text" value={name} onChange={this.handleChange_nam}/>
         Property Address:
@@ -91,7 +111,7 @@ export default class Wizard extends Component {
         Property Link (copy URL):
         <input type="text" value={image_url} onChange={this.handleChange_url}/>
         <Link to="/" onClick={this.postHouse}><button>Submit</button></Link>      <button onClick={this.dummyPostHouse}>Add Dummy House</button> 
-        <Link to="/"><button>Cancel</button></Link>
+        <Link to="/" onClick={this.cancel}><button>Cancel</button></Link>
       </div>
     )
   }
@@ -111,8 +131,3 @@ export default class Wizard extends Component {
     //     // }
     //     postHouse(name, address, city, state, price, image_url);
     // };
-    // cancel(){
-    //     this.setState({
-
-    //     })
-    // }

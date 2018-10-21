@@ -12,28 +12,39 @@ export default class Dashboard extends Component {
             houses: [],
         }
         this.componentDidMount = this.componentDidMount.bind(this);
+        this.getHouses = this.getHouses.bind(this);
+        this.deleteHouse = this.deleteHouse.bind(this);
         // this.postHouse = this.postHouse.bind(this);
     }
     componentDidMount(){
+        this.getHouses();
+    };
+    getHouses(){
         axios.get('/api/houses').then(response => {
-            console.log('dashboard.js, componentDidMount, response.data', response.data)
+            console.log('dashboard.js, getHouses, response.data', response.data)
             this.setState({
                 houses: response.data
             })
         })
-    }
+    };
     deleteHouse (houseId){
-        // const {id} = this.pr  ops;
         axios.delete(`/api/houses/${houseId}`)
-        .then(response => {
-            console.log('dashboard.js, deleteHouse, response.data', response.data)
-        })
-    }
+        .then( () => this.getHouses())
+    };
+    // updateHouse (houseId){
+    //     axios.delete(`/api/houses/${houseId}`)
+    //     .then(response)
+    // }
     render() {
         const {houses} = this.state;
-        const housesView = houses.map(elem => <House key={elem.key} id={elem.id} name={elem.name} price={elem.price} image_url={elem.image_url} city={elem.city} address={elem.address} state={elem.state} deleteHouse={this.deleteHouse}/>)
+        const housesView = houses.map(elem => {
+            return(
+        <div>
+            <House key={elem.key} id={elem.id} name={elem.name} price={elem.price} image_url={elem.image_url} city={elem.city} address={elem.address} state={elem.state} deleteHouse={this.deleteHouse} />
+        </div>
+        )})
 
-        console.log('Dashboard.js, this.state',this.state)
+        // console.log('Dashboard.js, this.state',this.state)
         return (
         <div>
             <button onClick={this.componentDidMount}>Check State</button>
