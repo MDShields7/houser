@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom';
-import {Route} from 'react-router-dom';
+import {Switch, Link, Route} from 'react-router-dom';
+
 import Step1 from '../Step1/Step1'
 import Step2 from '../Step2/Step2'
 import Step3 from '../Step3/Step3'
@@ -13,37 +13,28 @@ export default class Wizard extends Component {
         this.state = {
 
         }
-        this.dummyPostHouse = this.dummyPostHouse.bind(this);
-        this.postHouse = this.postHouse.bind(this);
-        this.cancel = this.cancel.bind(this);
+        // this.dummyPostHouse = this.dummyPostHouse.bind(this);
+        // this.postHouse = this.postHouse.bind(this);
+        // this.cancel = this.cancel.bind(this);
     };
-    cancel(){
-        this.setState({
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            price: 0,
-            image_url: '',
-        })
-    };
-    postHouse (){
-        // const {name, address, city, state, price, image_url} = this.state;
-        axios.post('/api/houses', {name, address, city, state, price, image_url})
-        .then(response => {console.log('wizard.js, postHouse, response',response)});
-    };
-    dummyPostHouse (){
-        console.log('dashboard.js, dummyPostHouse')
-        let name='White House'
-        let address='1786 Penn Ave'
-        let city='DoC'
-        let state='NA'
-        let price=20500000
-        let image_url='https://amp.businessinsider.com/images/5a86ef49d030721a008b4602-750-563.jpg';
-        axios.post('/api/houses', {name, address, city, state, price, image_url})
-        .then(response => {console.log(response)});
-        // this.componentDidMount();
-    };
+
+    // postHouse (){
+    //     // const {name, address, city, state, price, image_url} = this.state;
+    //     axios.post('/api/houses', {name, address, city, state, price, image_url})
+    //     .then(response => {console.log('wizard.js, postHouse, response',response)});
+    // };
+    // dummyPostHouse (){
+    //     console.log('dashboard.js, dummyPostHouse')
+    //     let name='White House'
+    //     let address='1786 Penn Ave'
+    //     let city='DoC'
+    //     let state='NA'
+    //     let price=20500000
+    //     let image_url='https://amp.businessinsider.com/images/5a86ef49d030721a008b4602-750-563.jpg';
+    //     axios.post('/api/houses', {name, address, city, state, price, image_url})
+    //     .then(response => {console.log(response)});
+    //     // this.componentDidMount();
+    // };
     // handleInput = (e) => {
     //     const name = e.target.name
     //     const value = e.target.value
@@ -61,13 +52,13 @@ export default class Wizard extends Component {
             <Link to="/" onClick={this.cancel}><button>Cancel</button></Link>
 
             <Switch>
-                <Route path='/wizard/step1' component={Step1}/>
+                <Route path='/wizard/' component={Step1}/>
                 <Route path='/wizard/step2' component={Step2}/>
                 <Route path='/wizard/step3' component={Step3}/>
             </Switch>
-            <Link path='/wizard/step2'><button>To Step One</button></Link>
+            <Link path='/wizard/'><button>To Step One</button></Link>
             <Link path='/wizard/step2'><button>To Step Two</button></Link>
-            <Link path='/wizard/step1'><button>To Step Three</button></Link>
+            <Link path='/wizard/step3'><button>To Step Three</button></Link>
 
         </div>
     )
@@ -89,4 +80,15 @@ export default class Wizard extends Component {
     //     //     }
     //     // }
     //     postHouse(name, address, city, state, price, image_url);
+    // };
+
+        // cancel(){
+    //     this.setState({
+    //         name: '',
+    //         address: '',
+    //         city: '',
+    //         state: '',
+    //         price: 0,
+    //         image_url: '',
+    //     })
     // };

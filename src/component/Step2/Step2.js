@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import wizRoutes from '../Wizard/Wizard'
 
 export default class Step2 extends Component {
   constructor(){

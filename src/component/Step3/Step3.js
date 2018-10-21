@@ -14,7 +14,7 @@ export default class Step3 extends Component {
 cancel(){
   this.setState({
       mortgage: 0,
-      rent: 0
+      rent: 0,
   })
 };
 
