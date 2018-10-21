@@ -1,28 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import Step1 from '../Step1/Step1'
+import Step2 from '../Step2/Step2'
+import Step3 from '../Step3/Step3'
 import './Wizard.css'
 
 export default class Wizard extends Component {
     constructor(){
         super();
         this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: 0,
-            price: 0,
-            image_url: '',
-            mortgage: 0,
-            rent: 0
+
         }
-        this.handleChange_nam = this.handleChange_nam.bind(this);
-        this.handleChange_adr = this.handleChange_adr.bind(this);
-        this.handleChange_cty = this.handleChange_cty.bind(this);
-        this.handleChange_sta = this.handleChange_sta.bind(this);
-        this.handleChange_prc = this.handleChange_prc.bind(this);
-        this.handleChange_url = this.handleChange_url.bind(this);
         this.dummyPostHouse = this.dummyPostHouse.bind(this);
         this.postHouse = this.postHouse.bind(this);
         this.cancel = this.cancel.bind(this);
@@ -38,7 +28,7 @@ export default class Wizard extends Component {
         })
     };
     postHouse (){
-        const {name, address, city, state, price, image_url} = this.state;
+        // const {name, address, city, state, price, image_url} = this.state;
         axios.post('/api/houses', {name, address, city, state, price, image_url})
         .then(response => {console.log('wizard.js, postHouse, response',response)});
     };
@@ -54,69 +44,38 @@ export default class Wizard extends Component {
         .then(response => {console.log(response)});
         // this.componentDidMount();
     };
-     
     // handleInput = (e) => {
     //     const name = e.target.name
     //     const value = e.target.value
     //     this.setState({[name]: value})
     // }
     
-    handleChange_nam(e){
-        this.setState({
-            name: e.target.value,
-        })
-    };
-    handleChange_adr(e){
-        this.setState({
-            address: e.target.value,
-        })
-    };
-    handleChange_cty(e){
-        this.setState({
-            city: e.target.value,
-        })
-    };
-    handleChange_sta(e){
-        this.setState({
-            state: e.target.value,
-        })
-    };
-    handleChange_prc(e){
-        this.setState({
-            price: e.target.value,
-        })
-    };
-    handleChange_url(e){
-        this.setState({
-            image_url: e.target.value,
-        })
-    };
+
   render() {
-      const{name, address, city, state, price, image_url} = this.state;
+    //   const{name, address, city, state, price, image_url} = this.state;
       console.log(this.state)
     return (
-      <div className='wizard-inputs'>
-        <h1>Wizard</h1>
-        
-        Property Name:
-        <input type="text" value={name} onChange={this.handleChange_nam}/>
-        Property Address:
-        <input type="text" value={address} onChange={this.handleChange_adr}/>
-        Property City:
-        <input type="text" value={city} onChange={this.handleChange_cty}/>
-        Property State:
-        <input type="text" value={state} onChange={this.handleChange_sta}/>
-        Property Price:
-        <input type="text" value={price} onChange={this.handleChange_prc}/>
-        Property Link (copy URL):
-        <input type="text" value={image_url} onChange={this.handleChange_url}/>
-        <Link to="/" onClick={this.postHouse}><button>Submit</button></Link>      <button onClick={this.dummyPostHouse}>Add Dummy House</button> 
-        <Link to="/" onClick={this.cancel}><button>Cancel</button></Link>
-      </div>
+
+        <div className='wizard-inputs'>
+            <h1>Wizard</h1>
+            <Link to="/" onClick={this.cancel}><button>Cancel</button></Link>
+
+            <Switch>
+                <Route path='/wizard/step1' component={Step1}/>
+                <Route path='/wizard/step2' component={Step2}/>
+                <Route path='/wizard/step3' component={Step3}/>
+            </Switch>
+            <Link path='/wizard/step2'><button>To Step One</button></Link>
+            <Link path='/wizard/step2'><button>To Step Two</button></Link>
+            <Link path='/wizard/step1'><button>To Step Three</button></Link>
+
+        </div>
     )
   }
 }
 
+
+{/* <Link to="/" onClick={this.postHouse}><button>Submit</button></Link>      <button onClick={this.dummyPostHouse}>Add Dummy House</button>  */}
 
 // wizPostHouse(){
     //     const{name, address, city, state, price, image_url} = this.state;
