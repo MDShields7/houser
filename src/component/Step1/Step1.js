@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import {updateName, updateAddress, updateCity, updateState, updateZip} from '../../ducks/reducer'
-import wizRoutes from '../Wizard/Wizard'
+import {updateName} from '../../ducks/reducer'
 
 class Step1 extends Component {
   constructor(){
       super();
       this.state = {
-          // name: '',
-          // address: '',
-          // city: '',
-          // state: '',
-          // zip: 0,
+          name: '',
+          address: '',
+          city: '',
+          stateName: '',
+          zip: 0,
       }
       this.handleChange_nam = this.handleChange_nam.bind(this);
       this.handleChange_adr = this.handleChange_adr.bind(this);
@@ -22,28 +21,36 @@ class Step1 extends Component {
       this.cancel = this.cancel.bind(this);
   };
   cancel(){
-        this.props.updateName('');  
-        this.props.updateAddress('');  
-        this.props.updateCity('');  
-        this.props.updateState('');  
-        this.props.updateZip('');  
+        this.state.name('');  
+        this.state.address('');  
+        this.state.city('');  
+        this.state.state('');  
+        this.state.zip(0);  
   };
   handleChange_nam(e){
-    this.props.updateName(e.target.value)
-  };
+    this.setState({name:e.target.value
+  })
+};
   handleChange_adr(e){
-    this.props.updateAddress(e.target.value)
-  };
+    this.setState({address:e.target.value
+  })
+};
   handleChange_cty(e){
-    this.props.updateCity(e.target.value)
-  };
+    this.setState({city:e.target.value
+  })
+};
   handleChange_sta(e){
-    this.props.updateState(e.target.value)
-  };
+    this.setState({stateName:e.target.value
+  })
+};
+  handleChange_zip(e){
+    this.setState({zip:e.target.value
+  })
+};
 
   render() {
-    const{name, address, city, state, zip} = this.props;
-    const{updateName, updateAddress, updateCity, updateState, updateZip} = this.props;
+    const{name, address, city, stateName, zip} = this.props;
+    // const{updateName, updateAddress, updateCity, updateState, updateZip} = this.props;
     console.log(this.props)
     return (
       <div>
@@ -55,25 +62,23 @@ class Step1 extends Component {
         Property City:
         <input type="text" value={city} onChange={this.handleChange_cty}/>
         Property State:
-        <input type="text" value={state} onChange={this.handleChange_sta}/>     
+        <input type="text" value={stateName} onChange={this.handleChange_sta}/>     
         Property ZIP:
         <input type="text" value={zip} onChange={this.handleChange_zip}/>     
 
-        <Link path='/wizard/step2'><button>To Step Two</button></Link>
+        <Link to='/wizard/step2' onClick={this.props.updateName(this.state)}><button>To Step Two</button></Link>
       </div>
     )
   }
 }
 
-function mapStateToProps ( state ){
-  const {updateName, updateAddress, updateCity, updateState, updateZip} = state;
+const mapStateToProps = ( state ) => {
+  const {name} = state;
     return {
-      updateName,
-      updateAddress,
-      updateCity,
-      updateState,
-      updateZip,
+      name
     }
 };
 
-export default connect (mapStateToProps, {updateName , updateAddress, updateCity, updateState, updateZip})(Step1);
+export default connect (mapStateToProps, {updateName})(Step1);
+
+//updateName , updateAddress, updateCity, updateState, updateZip

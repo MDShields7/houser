@@ -56,9 +56,9 @@ export default class Wizard extends Component {
                 <Route path='/wizard/step2' component={Step2}/>
                 <Route path='/wizard/step3' component={Step3}/>
             </Switch>
-            <Link path='/wizard/'><button>To Step One</button></Link>
-            <Link path='/wizard/step2'><button>To Step Two</button></Link>
-            <Link path='/wizard/step3'><button>To Step Three</button></Link>
+            <Link to='/wizard/'><button>To Step One</button></Link>
+            <Link to='/wizard/step2'><button>To Step Two</button></Link>
+            <Link to='/wizard/step3'><button>To Step Three</button></Link>
 
         </div>
     )
