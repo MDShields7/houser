@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import {Switch, Link, Route} from 'react-router-dom';
 
 import Step1 from '../Step1/Step1'
@@ -52,13 +52,13 @@ export default class Wizard extends Component {
             <Link to="/" onClick={this.cancel}><button>Cancel</button></Link>
 
             <Switch>
-                <Route path='/wizard/' component={Step1}/>
+                <Route path='/wizard/step1' component={Step1}/>
                 <Route path='/wizard/step2' component={Step2}/>
                 <Route path='/wizard/step3' component={Step3}/>
             </Switch>
-            <Link to='/wizard/'><button>To Step One</button></Link>
+            {/* <Link to='/wizard/'><button>To Step One</button></Link>
             <Link to='/wizard/step2'><button>To Step Two</button></Link>
-            <Link to='/wizard/step3'><button>To Step Three</button></Link>
+            <Link to='/wizard/step3'><button>To Step Three</button></Link> */}
 
         </div>
     )
@@ -66,7 +66,7 @@ export default class Wizard extends Component {
 }
 
 
-{/* <Link to="/" onClick={this.postHouse}><button>Submit</button></Link>      <button onClick={this.dummyPostHouse}>Add Dummy House</button>  */}
+/* <Link to="/" onClick={this.postHouse}><button>Submit</button></Link>      <button onClick={this.dummyPostHouse}>Add Dummy House</button>  */
 
 // wizPostHouse(){
     //     const{name, address, city, state, price, image_url} = this.state;

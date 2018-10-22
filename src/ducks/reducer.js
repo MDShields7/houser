@@ -1,5 +1,5 @@
 const initialState = {
-    name: '',
+    nameProp: '',
     address: '',
     city: '',
     stateName: '',
@@ -9,8 +9,8 @@ const initialState = {
     rent: 0,
 };
 
-// const UPDATE_HOUSE = 'UPDATE HOUSE';
-const UPDATE_NAME = 'UPDATE NAME';
+const UPDATE_HOUSE = 'UPDATE HOUSE';
+// const UPDATE_NAME = 'UPDATE NAME';
 // const UPDATE_ADDRESS = 'UPDATE ADDRESS';
 // const UPDATE_CITY = 'UPDATE CITY';
 // const UPDATE_STATE = 'UPDATE STATE';
@@ -21,10 +21,10 @@ const UPDATE_RENT = 'UPDATE RENT';
 
 function reducer (state = initialState, action){
     switch (action.type){
-        // case UPDATE_HOUSE:
-        //     return Object.assign({}, state, {house: action.payload})
-        case UPDATE_NAME:
-            return Object.assign({}, state, {name: action.payload})
+        case UPDATE_HOUSE:
+            return Object.assign({}, state, {house: action.payload})
+        // case UPDATE_NAME:
+        //     return Object.assign({}, state, {name: action.payload})
         // case UPDATE_ADDRESS:
         //     return Object.assign({}, state, {address: action.payload})
         // case UPDATE_CITY:
@@ -42,18 +42,24 @@ function reducer (state = initialState, action){
         default: return state;
     }
 }
-// export function updateHouse ( house ){
-//     return {
-//         type: UPDATE_HOUSE,
-//         payload: house
-//     }
-// }
-export function updateName ( name ){
+export function updateHouse ( nam, adr, cty, sta, zip ){
     return {
-        type: UPDATE_NAME,
-        payload: name
+        type: UPDATE_HOUSE,
+        payload: {
+            nameProp: nam,
+            address: adr,
+            city: cty,
+            stateName: sta,
+            zip: zip
+        }
     }
 }
+// export function updateName ( name ){
+//     return {
+//         type: UPDATE_NAME,
+//         payload: name
+//     }
+// }
 // export function updateAddress ( address ){
 //     return {
 //         type: UPDATE_ADDRESS,

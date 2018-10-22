@@ -50,7 +50,7 @@ export default class Dashboard extends Component {
             <button onClick={this.componentDidMount}>Check State</button>
             <div className='dashboard-dash'>
                 Dashboard
-                <Link to="/wizard"><button>Add New Property</button></Link>
+                <Link to="/wizard/step1"><button>Add New Property</button></Link>
             </div>
             <div className='house-container'>
                 

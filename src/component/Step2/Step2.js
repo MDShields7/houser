@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import wizRoutes from '../Wizard/Wizard'
+// import wizRoutes from '../Wizard/Wizard'
 
 export default class Step2 extends Component {
   constructor(){
@@ -28,6 +28,7 @@ export default class Step2 extends Component {
 
         Property Price:
         <input type="text" value={image_url} onChange={this.handleChange_url}/>
+        <Link to='/wizard/step3' onClick={ () => this.props.updateImg(this.state)}><button>To Step Two</button></Link>
 
       </div>
     )
